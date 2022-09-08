@@ -4,7 +4,7 @@ This is original Qbus 4.0 what upgrade to v5.0, this is genuine original.
 Installation:
 ```
 Create a new folder (QBUS), this will be used for the server binaries.
-Download the current recommended master https://github.com/Pintta/Siide-Framework
+Download the current recommended master https://github.com/Pintta/QBUSV5
 Extract the build to the directory that was previously created.
 Like:
           FOLDER -> QBUS
