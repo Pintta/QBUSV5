@@ -2,7 +2,7 @@
 This is original Qbus 4.0 what upgrade to v5.0, this is genuine original.
 
 Installation:
-
+```
 Create a new folder (Siide-framework), this will be used for the server binaries.
 Download the current recommended master https://github.com/Pintta/Siide-Framework
 Extract the build to the directory that was previously created.
@@ -15,7 +15,7 @@ Set the license key in your server.cfg using sv_licenseKey "changeme" and steam_
 Starting server:
           FOLDER -> Siide-Framework/Server
                     -> FXServer.exe (double click)
-
+```
 https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#windows
 
 https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#linux
