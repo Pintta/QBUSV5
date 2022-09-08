@@ -25,3 +25,6 @@ If you want added admin/god permissions, added to database table 'permissions'
 
 And remember change settings here, if you want database working with qbus server..
 ![kuva](https://user-images.githubusercontent.com/69728770/189176874-2359fa59-e8af-41df-b0f7-388464bab7df.png)
+
+You can find commands 'commands.lua' and you can edited there commands names easylity.
+![kuva](https://user-images.githubusercontent.com/69728770/189177118-acf9739a-a4c8-42cf-8051-b8f5f5556639.png)
