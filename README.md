@@ -19,3 +19,6 @@ Starting server:
 https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#windows
 
 https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#linux
+
+If you want added admin/god permissions, added to database table 'permissions'
+![kuva](https://user-images.githubusercontent.com/69728770/189176470-2656d16a-79ae-48a0-8cdf-081d6ad422dc.png)
