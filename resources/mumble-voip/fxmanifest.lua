@@ -8,7 +8,6 @@ server_script 'server.lua'
 ui_page 'ui/index.html'
 files {
 	'ui/index.html",
-	'ui/mic_click_on.ogg',
-	'ui/mic_click_off.ogg',
+	'ui/*.ogg',
 }
 provide 'tokovoip_script'
