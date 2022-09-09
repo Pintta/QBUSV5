@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `bans` (
   `ip` varchar(50) DEFAULT NULL,
   `reason` text DEFAULT NULL,
   `expire` int(11) DEFAULT NULL,
-  `bannedby` varchar(255) NOT NULL DEFAULT 'LeBanhammer',
+  `bannedby` varchar(255) NOT NULL DEFAULT 'Anticheat',
   PRIMARY KEY (`id`),
   KEY `steam` (`steam`),
   KEY `license` (`license`),
