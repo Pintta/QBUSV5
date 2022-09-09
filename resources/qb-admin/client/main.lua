@@ -10,31 +10,27 @@ Citizen.CreateThread(function()
     end
 end)
 
---- CODE
-
 local PlayerBlips = {}
 QBAdmin = {}
 QBAdmin.Functions = {}
 in_noclip_mode = false
 
 QBAdmin.Functions.DrawText3D = function(x, y, z, text, lines)
-    -- Amount of lines default 1
-    if lines == nil then
-        lines = 1
-    end
-
+    	if lines == nil then
+        	lines = 1
+    	end
 	SetTextScale(0.35, 0.35)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(true)
-    AddTextComponentString(text)
-    SetDrawOrigin(x,y,z, 0)
-    DrawText(0.0, 0.0)
-    local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0+0.0125 * lines, 0.017+ factor, 0.03 * lines, 0, 0, 0, 75)
-    ClearDrawOrigin()
+    	SetTextFont(4)
+    	SetTextProportional(1)
+    	SetTextColour(255, 255, 255, 215)
+    	SetTextEntry("STRING")
+    	SetTextCentre(true)
+    	AddTextComponentString(text)
+    	SetDrawOrigin(x,y,z, 0)
+    	DrawText(0.0, 0.0)
+    	local factor = (string.len(text)) / 370
+    	DrawRect(0.0, 0.0+0.0125 * lines, 0.017+ factor, 0.03 * lines, 0, 0, 0, 75)
+    	ClearDrawOrigin()
 end
 
 GetPlayers = function()
@@ -51,22 +47,20 @@ end
 GetPlayersFromCoords = function(coords, distance)
     local players = GetPlayers()
     local closePlayers = {}
-
     if coords == nil then
-		coords = GetEntityCoords(GetPlayerPed(-1))
+	coords = GetEntityCoords(GetPlayerPed(-1))
     end
     if distance == nil then
         distance = 5.0
     end
     for _, player in pairs(players) do
-		local target = GetPlayerPed(player)
-		local targetCoords = GetEntityCoords(target)
-		local targetdistance = GetDistanceBetweenCoords(targetCoords, coords.x, coords.y, coords.z, true)
-		if targetdistance <= distance then
-			table.insert(closePlayers, player)
-		end
+	local target = GetPlayerPed(player)
+	local targetCoords = GetEntityCoords(target)
+	local targetdistance = GetDistanceBetweenCoords(targetCoords, coords.x, coords.y, coords.z, true)
+	if targetdistance <= distance then
+		table.insert(closePlayers, player)
+	end
     end
-    
     return closePlayers
 end
 
@@ -76,21 +70,21 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
 end)
 
 AvailableWeatherTypes = {
-    {label = "Extra Sunny",         weather = 'EXTRASUNNY',}, 
-    {label = "Clear",               weather = 'CLEAR',}, 
-    {label = "Neutral",             weather = 'NEUTRAL',}, 
-    {label = "Smog",                weather = 'SMOG',}, 
-    {label = "Foggy",               weather = 'FOGGY',}, 
-    {label = "Overcast",            weather = 'OVERCAST',}, 
-    {label = "Clouds",              weather = 'CLOUDS',}, 
-    {label = "Clearing",            weather = 'CLEARING',}, 
-    {label = "Rain",                weather = 'RAIN',}, 
-    {label = "Thunder",             weather = 'THUNDER',}, 
-    {label = "Snow",                weather = 'SNOW',}, 
-    {label = "Blizzard",            weather = 'BLIZZARD',}, 
-    {label = "Snowlight",           weather = 'SNOWLIGHT',}, 
-    {label = "XMAS (Heavy Snow)",   weather = 'XMAS',}, 
-    {label = "Halloween (Scarry)",  weather = 'HALLOWEEN',},
+    {label = "Extra Sunny",         weather = 'EXTRASUNNY'}, 
+    {label = "Clear",               weather = 'CLEAR'}, 
+    {label = "Neutral",             weather = 'NEUTRAL'}, 
+    {label = "Smog",                weather = 'SMOG'}, 
+    {label = "Foggy",               weather = 'FOGGY'}, 
+    {label = "Overcast",            weather = 'OVERCAST'}, 
+    {label = "Clouds",              weather = 'CLOUDS'}, 
+    {label = "Clearing",            weather = 'CLEARING'}, 
+    {label = "Rain",                weather = 'RAIN'}, 
+    {label = "Thunder",             weather = 'THUNDER'}, 
+    {label = "Snow",                weather = 'SNOW'}, 
+    {label = "Blizzard",            weather = 'BLIZZARD'}, 
+    {label = "Snowlight",           weather = 'SNOWLIGHT'}, 
+    {label = "XMAS (Heavy Snow)",   weather = 'XMAS'}, 
+    {label = "Halloween (Scarry)",  weather = 'HALLOWEEN'},
 }
 
 BanTimes = {
@@ -166,14 +160,11 @@ function getPlayers()
             ['serverid'] = playerId,
         }
     end
-
     table.sort(players, function(a, b)
         return a.serverid < b.serverid
     end)
-
     return players
 end
-
 
 RegisterNetEvent('qb-admin:client:openMenu')
 AddEventHandler('qb-admin:client:openMenu', function(group, dealers)
@@ -217,7 +208,6 @@ Citizen.CreateThread(function()
         "Perm",
         "Self",
     }
-
     local times = {
         "00:00",
         "01:00",
@@ -244,37 +234,24 @@ Citizen.CreateThread(function()
         "22:00",
         "23:00",
     }
-
-    local perms = {
-        "User",
-        "Admin",
-        "God"
-    }
-
-    
+    local perms = {"User", "Admin", "God"}
     local currentBanIndex = 1
     local selectedBanIndex = 1
-    
     local currentMinTimeIndex = 1
     local selectedMinTimeIndex = 1
-
     local currentMaxTimeIndex = 1
     local selectedMaxTimeIndex = 1
-
     local currentPermIndex = 1
     local selectedPermIndex = 1
-
     WarMenu.CreateMenu('admin', 'JK Admin')
     WarMenu.CreateSubMenu('playerMan', 'admin')
     WarMenu.CreateSubMenu('serverMan', 'admin')
     WarMenu.CreateSubMenu('adminOpt', 'admin')
     WarMenu.CreateSubMenu('selfOptions', 'adminOpt')
-
     WarMenu.CreateSubMenu('weatherOptions', 'serverMan')
     WarMenu.CreateSubMenu('dealerManagement', 'serverMan')
     WarMenu.CreateSubMenu('allDealers', 'dealerManagement')
     WarMenu.CreateSubMenu('createDealer', 'dealerManagement')
-    
     for k, v in pairs(menus) do
         WarMenu.SetMenuX(v, 0.71)
         WarMenu.SetMenuY(v, 0.15)
@@ -282,7 +259,6 @@ Citizen.CreateThread(function()
         WarMenu.SetTitleColor(v, 255, 255, 255, 255)
         WarMenu.SetTitleBackgroundColor(v, 0, 0, 0, 111)
     end
-
     while true do
         if WarMenu.IsMenuOpened('admin') then
             WarMenu.MenuButton('Admin Options', 'adminOpt')
@@ -325,7 +301,6 @@ Citizen.CreateThread(function()
             end
             if WarMenu.CheckBox("Delete Lazer", deleteLazer, function(checked) deleteLazer = checked end) then
             end
-            
             WarMenu.Display()
         elseif WarMenu.IsMenuOpened('playerMan') then
             local players = getPlayers()
@@ -342,7 +317,6 @@ Citizen.CreateThread(function()
                 elseif WarMenu.CreateSubMenu('adminOptions', currentPlayer) then
                     currentPlayerMenu = 'adminOptions'
                 end
-
                 if myPermissionRank == "god" then
                     if WarMenu.CreateSubMenu('permissionOptions', currentPlayer) then
                         currentPlayerMenu = 'permissionOptions'
@@ -363,13 +337,11 @@ Citizen.CreateThread(function()
                     end
                 end
             end
-
             if myPermissionRank == "god" then
                 if WarMenu.CreateSubMenu('permissionOptions', currentPlayer) then
                     currentPlayerMenu = 'permissionOptions'
                 end
             end
-
             WarMenu.Display()
         elseif WarMenu.IsMenuOpened('serverMan') then
             WarMenu.MenuButton('Weather Options', 'weatherOptions')
@@ -390,7 +362,6 @@ Citizen.CreateThread(function()
             if myPermissionRank == "god" then
                 WarMenu.MenuButton('Permission Options', 'permissionOptions')
             end
-            
             WarMenu.Display()
         elseif WarMenu.IsMenuOpened('playerOptions') then
             if WarMenu.MenuButton('Kill', currentPlayer) then
@@ -408,13 +379,6 @@ Citizen.CreateThread(function()
                 local target = GetPlayerServerId(currentPlayer)
                 TriggerServerEvent("qb-admin:server:Freeze", target, isFreeze)
             end
-            -- if WarMenu.CheckBox("Spectate", isSpectating, function(checked) isSpectating = checked end) then
-            --     local target = GetPlayerFromServerId(GetPlayerServerId(currentPlayer))
-            --     local targetPed = GetPlayerPed(target)
-            --     local targetCoords = GetEntityCoords(targetPed)
-
-            --     SpectatePlayer(targetPed, isSpectating)
-            -- end
             if WarMenu.MenuButton("Open Inventory", currentPlayer) then
                 local targetId = GetPlayerServerId(currentPlayer)
 
@@ -425,7 +389,6 @@ Citizen.CreateThread(function()
 
                 TriggerServerEvent('qb-admin:server:OpenSkinMenu', targetId)
             end
-
             WarMenu.Display()
         elseif WarMenu.IsMenuOpened('teleportOptions') then
             if WarMenu.MenuButton('Goto', currentPlayer) then
@@ -475,20 +438,20 @@ Citizen.CreateThread(function()
                     time = time * 3600
                 end
                 DisplayOnscreenKeyboard(1, "Reason", "", "Reason", "", "", "", 128 + 1)
-				while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
-					Citizen.Wait(7)
-				end
+		while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
+		Citizen.Wait(7)
+		end
                 local reason = GetOnscreenKeyboardResult()
                 if reason ~= nil and reason ~= "" and time ~= 0 then
-                    local target = GetPlayerServerId(currentPlayer)
-                    TriggerServerEvent("qb-admin:server:banPlayer", target, time, reason)
+			    local target = GetPlayerServerId(currentPlayer)
+			    TriggerServerEvent("qb-admin:server:banPlayer", target, time, reason)
                 end
             end
             if WarMenu.MenuButton('Kick', currentPlayer) then
                 DisplayOnscreenKeyboard(1, "Reason", "", "Reason", "", "", "", 128 + 1)
-				while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
-					Citizen.Wait(7)
-				end
+		while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
+			Citizen.Wait(7)
+		end
                 local reason = GetOnscreenKeyboardResult()
                 if reason ~= nil and reason ~= "" then
                     local target = GetPlayerServerId(currentPlayer)
@@ -609,15 +572,12 @@ function toggleBlips()
     if showBlips then
         Citizen.CreateThread(function()
             local Players = getPlayers()
-
             for k, v in pairs(Players) do
                 local playerPed = v["ped"]
                 if DoesEntityExist(playerPed) then
                     if PlayerBlips[k] == nil then
                         local playerName = v["name"]
-            
                         PlayerBlips[k] = AddBlipForEntity(playerPed)
-            
                         SetBlipSprite(PlayerBlips[k], 1)
                         SetBlipColour(PlayerBlips[k], 0)
                         SetBlipScale  (PlayerBlips[k], 0.75)
@@ -649,49 +609,34 @@ end
 
 Citizen.CreateThread(function()	
 	while true do
-		Citizen.Wait(0)
-
+	Citizen.Wait(0)
         if deleteLazer then
             local color = {r = 255, g = 255, b = 255, a = 200}
             local position = GetEntityCoords(GetPlayerPed(-1))
             local hit, coords, entity = RayCastGamePlayCamera(1000.0)
-            
-            -- If entity is found then verifie entity
             if hit and (IsEntityAVehicle(entity) or IsEntityAPed(entity) or IsEntityAnObject(entity)) then
                 local entityCoord = GetEntityCoords(entity)
                 local minimum, maximum = GetModelDimensions(GetEntityModel(entity))
-                
                 DrawEntityBoundingBox(entity, color)
                 DrawLine(position.x, position.y, position.z, coords.x, coords.y, coords.z, color.r, color.g, color.b, color.a)
                 QBAdmin.Functions.DrawText3D(entityCoord.x, entityCoord.y, entityCoord.z, "Obj: " .. entity .. " Model: " .. GetEntityModel(entity).. " \nPress [~g~E~s~] to delete the object!", 2)
-
-                -- When E pressed then remove targeted entity
                 if IsControlJustReleased(0, 38) then
-                    -- Set as missionEntity so the object can be remove (Even map objects)
                     SetEntityAsMissionEntity(entity, true, true)
-                    --SetEntityAsNoLongerNeeded(entity)
-                    --RequestNetworkControl(entity)
                     DeleteEntity(entity)
                 end
-            -- Only draw of not center of map
             elseif coords.x ~= 0.0 and coords.y ~= 0.0 then
-                -- Draws line to targeted position
                 DrawLine(position.x, position.y, position.z, coords.x, coords.y, coords.z, color.r, color.g, color.b, color.a)
                 DrawMarker(28, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 0.1, 0.1, 0.1, color.r, color.g, color.b, color.a, false, true, 2, nil, nil, false)
             end
         else
             Citizen.Wait(1000)
         end
-	end
 end)
 
--- Draws boundingbox around the object with given color parms
 function DrawEntityBoundingBox(entity, color)
     local model = GetEntityModel(entity)
     local min, max = GetModelDimensions(model)
     local rightVector, forwardVector, upVector, position = GetEntityMatrix(entity)
-
-    -- Calculate size
     local dim = 
 	{ 
 		x = 0.5*(max.x - min.x), 
@@ -796,7 +741,6 @@ function RotationToDirection(rotation)
 	return direction
 end
 
--- Raycast function for "Admin Lazer"
 function RayCastGamePlayCamera(distance)
     local cameraRotation = GetGameplayCamRot()
 	local cameraCoord = GetGameplayCamCoord()
