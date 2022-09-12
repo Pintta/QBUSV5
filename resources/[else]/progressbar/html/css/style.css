@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 html {
     overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -14,11 +13,21 @@ body {
     width: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: #dddddd00;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #dddddd00;
+    border-radius: 0px;
+}
+
 .progress-container {
     display: none;
     z-index: 5;
-    color: #fff;
-    font-family: sans-serif;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
     width: 15%;
     position: fixed;
     bottom: 12.65%;
@@ -42,10 +51,10 @@ body {
     font-size: 1.3vh;
     line-height: 4vh;
     position: relative;
-    color: #ffffff;
+    color: #000000;
     z-index: 10;
     font-weight: bold;
-    font-variant: small-caps;
+    font-family: 'Poppins', sans-serif;
 }
 
 .progress-bar-container {
@@ -61,7 +70,7 @@ body {
 }
 
 .progress-bar {
-    background-color: #396991;
+    background-color: #cfb53b !important;
     width: 0%;
     height: 4vh;
     transition: width 0.3s;
