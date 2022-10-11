@@ -13,13 +13,6 @@ CREATE TABLE IF NOT EXISTS `apartments` (
   KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4144 DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `api_tokens` (
-  `token` varchar(255) NOT NULL,
-  `purpose` varchar(255) DEFAULT NULL,
-  `time` int(25) DEFAULT NULL,
-  PRIMARY KEY (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE IF NOT EXISTS `bans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
