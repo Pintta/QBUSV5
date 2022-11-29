@@ -29,7 +29,7 @@ And remember change settings here, if you want database working with qbus server
 You can find commands 'commands.lua' and you can edited there commands names easylity.
 ![kuva](https://user-images.githubusercontent.com/69728770/189177118-acf9739a-a4c8-42cf-8051-b8f5f5556639.png)
 
-This package does not include MLO premises, nor import cars.
+This package does not include MLO premises, not import cars.
 
 If you want support me:
 https://ko-fi.com/huuhkaja
