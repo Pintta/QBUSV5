@@ -1,8 +1,6 @@
 QBCore = nil
 TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
 
--- Code
-
 Citizen.CreateThread(function()
     QBCore.Functions.ExecuteSql(false, "SELECT * FROM `moneysafes`", function(safes)
         if safes[1] ~= nil then
@@ -22,19 +20,8 @@ Citizen.CreateThread(function()
     end)
 end)
 
-QBCore.Commands.Add("deposit", "Deposit money in the company", {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    local amount = tonumber(args[1]) or 0
-
-    TriggerClientEvent('qb-moneysafe:client:DepositMoney', source, amount)
-end)
-
-QBCore.Commands.Add("whitdraw", "Whitdraw from the company", {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    local amount = tonumber(args[1]) or 0
-
-    TriggerClientEvent('qb-moneysafe:client:WithdrawMoney', source, amount)
-end)
+-- TriggerClientEvent('qb-moneysafe:client:WithdrawMoney', source, amount)
+-- TriggerClientEvent('qb-moneysafe:client:DepositMoney', source, amount)
 
 function AddTransaction(safe, type, amount, Player, Automated)
     local cid = nil
@@ -71,7 +58,6 @@ RegisterServerEvent('qb-moneysafe:server:DepositMoney')
 AddEventHandler('qb-moneysafe:server:DepositMoney', function(safe, amount, sender)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    
     if Player.PlayerData.money.cash >= amount then
         Player.Functions.RemoveMoney('cash', amount)
     elseif Player.PlayerData.money.bank >= amount then
@@ -102,7 +88,6 @@ RegisterServerEvent('qb-moneysafe:server:WithdrawMoney')
 AddEventHandler('qb-moneysafe:server:WithdrawMoney', function(safe, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
     if (Config.Safes[safe].money - amount) >= 0 then 
         AddTransaction(safe, "withdraw", amount, Player, false)
         Config.Safes[safe].money = (Config.Safes[safe].money - amount)
