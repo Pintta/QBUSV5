@@ -1,17 +1,8 @@
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
-
-description 'vehiclemod'
-
-client_scripts {
-	'config.lua',
-	'client/main.lua',
-}
-
-server_scripts {
-    'server/main.lua',
-	'config.lua',
-}
-
+fx_version 'adamant'
+game 'gta5'
+shared_script 'config.lua'
+client_script 'clien/main.lua'
+server_script 'server/main.lua'
 exports {
 	'GetVehicleStatusList',
 	'GetVehicleStatus',
