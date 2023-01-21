@@ -1,5 +1,5 @@
-/*Pintta Siide Framework 17.01.2023 https://github.com/Pintta/QBUSV5*/
-CREATE DATABASE IF NOT EXISTS QBUS5 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+/*Pintta Siide Framework 22.01.2023 https://github.com/Pintta/QBUSV5*/
+CREATE DATABASE `QBUS5`;
 USE QBUS5;
 
 CREATE TABLE IF NOT EXISTS `apartments` (
@@ -447,4 +447,4 @@ CREATE TABLE IF NOT EXISTS `player_parking_vips` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Pintta Siide Framework 17.01.2023 https://github.com/Pintta/QBUSV5*/
+/*Pintta Siide Framework 22.01.2023 https://github.com/Pintta/QBUSV5*/
