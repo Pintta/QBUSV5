@@ -1,5 +1,7 @@
-23/07/2023
-I will updated this package fully new one.
+
+03.09.2023
+I had thought about bringing a new version of this to github.com, but I decided to deploy the package in a new RP city in FiveM.
+When it's finished sometime, I might bring it here.
 
 # QBUSV5
 This is original Qbus 4.0 what upgrade to v5.0, this is genuine original.
